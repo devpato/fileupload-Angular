@@ -7,17 +7,18 @@ import { UploadFormComponent } from "./uploads/upload-form/upload-form.component
 import { environment } from "../environments/environment";
 
 import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireStorageModule } from "angularfire2/storage";
 import { UploadService } from "./uploads/shared/upload.service";
+import { DropZoneDirective } from './drop-zone.directive';
 
 @NgModule({
-  declarations: [AppComponent, UploadListComponent, UploadFormComponent],
+  declarations: [AppComponent, UploadListComponent, UploadFormComponent, DropZoneDirective],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFireStorageModule,
+    AngularFirestoreModule
   ],
   providers: [UploadService],
   bootstrap: [AppComponent]

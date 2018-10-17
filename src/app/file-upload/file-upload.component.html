@@ -23,12 +23,23 @@
 
 <div *ngIf="snapshot | async as snap">
   {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
-  <div *ngIf="downloadURL | async as url">
+  <!-- <div *ngIf="downloadURL | async as url">
     <h3>Results!</h3>
+    {{ url }}
     <img [src]="url"><br>
     <a [href]="url" rel="noopener" download>Download Me!</a>
-  </div>
+  </div> -->
+
   <button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
   <button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
   <button (click)="task.resume()" class="button is-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
+</div>
+
+
+<div *ngIf="urlImg !== undefined">
+  <h3>Results!</h3>
+  {{urlImg}}
+  <br />
+  <img [src]="urlImg"><br>
+  <a [href]="urlImg" rel="noopener" download>Download Me!</a>
 </div>

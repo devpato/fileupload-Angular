@@ -86,12 +86,13 @@ export class FileUploadComponent implements OnInit {
             .subscribe(url => {
               const Url = url; // for ts
               this.urlImg = url; // with this you can use it in the html
-              console.log(Url);
               this.db.collection("photos").add({
                 path,
                 size: snap.totalBytes,
                 imgUrl: this.urlImg
               });
+              console.log("here");
+              console.log(Url);
             });
         }
       })
